@@ -7,21 +7,44 @@
     "dart.sdkPath": ".fvm/flutter_sdk/bin/dart",
     "configurations": [
         {
-            "name": "employee_app",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "employee_app (profile mode)",
+            "name": "mock",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "program": "lib/main_mock.dart",
+            "args": [
+                "--flavor",
+                "mock",
+            ],
         },
         {
-            "name": "employee_app (release mode)",
+            "name": "dev",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
-        }
+            "program": "lib/main_dev.dart",
+            "args": [
+                "--flavor",
+                "dev",
+            ],
+        },
+        {
+            "name": "uat",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_uat.dart",
+            "args": [
+                "--flavor",
+                "uat",
+            ],
+        },
+        {
+            "name": "prod",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_prod.dart",
+            "args": [
+                "--flavor",
+                "prod",
+            ],
+        },
     ]
 }

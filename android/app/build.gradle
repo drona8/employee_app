@@ -58,6 +58,38 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    flavorDimensions "env"
+
+    productFlavors {
+        mock {
+            dimension "env"
+            applicationIdSuffix ".mock"
+            resValue "string", "app_name", "empApp Mock"
+            manifestPlaceholders += [appAuthRedirectScheme: "com.example.employee_app"]
+        }
+
+        dev {
+            dimension "env"
+            applicationIdSuffix ".dev"
+            resValue "string", "app_name", "empApp Dev"
+            manifestPlaceholders += [appAuthRedirectScheme: "com.example.employee_app"]
+        }
+
+        uat {
+            dimension "env"
+            applicationIdSuffix ".uat"
+            resValue "string", "app_name", "empApp Uat"
+            manifestPlaceholders += [appAuthRedirectScheme: "com.example.employee_app"]
+        }
+
+        prod {
+            dimension "env"
+            resValue "string", "app_name", "empApp"
+            manifestPlaceholders += [appAuthRedirectScheme: "com.example.employee_app"]
+        }
+
+    }
 }
 
 flutter {
