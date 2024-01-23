@@ -20,6 +20,7 @@ class EmployeeAppBar extends StatelessWidget implements PreferredSizeWidget {
         statusBarColor: Theme.of(context).primaryColorDark,
       ),
       backgroundColor: Theme.of(context).primaryColor,
+      automaticallyImplyLeading: false,
     );
   }
 

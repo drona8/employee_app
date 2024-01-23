@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:auto_route/auto_route.dart';
+import 'package:employee_app/presentation/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 import 'config.dart';
