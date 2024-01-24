@@ -29,7 +29,7 @@ class EmployeeListScreen extends StatelessWidget {
       ),
       body: _EmployeeList(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => context.router.pushNamed(RouteNames.addEmployee),
+        onPressed: () => context.router.pushNamed(RouteNames.manageEmployee),
         child: const Icon(Icons.add),
       ),
     );
@@ -52,7 +52,6 @@ class _EmployeeList extends StatelessWidget {
                 isUndoRequired: true,
               );
               context.router.pop();
-              //success
             }
           },
           (either) => either.fold(
@@ -144,7 +143,7 @@ class _EmployeeItem extends StatelessWidget {
             context
                 .read<EmployeeBloc>()
                 .add(EmployeeEvent.proceedToEditEmployee(employee: employee));
-            context.router.push(AddEmployeeRoute(isEdit: true));
+            context.router.push(ManageEmployeeRoute(isEdit: true));
           },
         ),
       ),

@@ -36,6 +36,7 @@ class CustomTextField extends StatelessWidget {
       readOnly: readOnly,
       decoration: InputDecoration(
         hintText: hintText,
+        helperText: '',
         hintStyle: Theme.of(context).textTheme.titleMedium,
         prefixIcon: Container(
           margin: const EdgeInsets.all(6),

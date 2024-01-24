@@ -17,8 +17,8 @@ import 'designation_menu.dart';
 final _formKey = GlobalKey<FormState>();
 
 @RoutePage()
-class AddEmployeeScreen extends StatelessWidget {
-  AddEmployeeScreen({
+class ManageEmployeeScreen extends StatelessWidget {
+  ManageEmployeeScreen({
     super.key,
     this.isEdit = false,
   });
@@ -250,10 +250,15 @@ class AddEmployeeScreen extends StatelessWidget {
                         const SizedBox(
                           width: 10,
                         ),
-                        const SvgImageWidget(
-                          svgImage: AppAssets.rightArrowIcon,
-                          height: 24,
-                          width: 24,
+                        Container(
+                          margin: const EdgeInsets.only(
+                            bottom: 30,
+                          ),
+                          child: const SvgImageWidget(
+                            svgImage: AppAssets.rightArrowIcon,
+                            height: 24,
+                            width: 24,
+                          ),
                         ),
                         const SizedBox(
                           width: 10,
@@ -268,7 +273,8 @@ class AddEmployeeScreen extends StatelessWidget {
                               context: context,
                               isStartDate: false,
                             ),
-                            validator: (value) => null,
+                            validator: (value) =>
+                                _commonValidator(value: value),
                             controller: endDateController,
                           ),
                         ),

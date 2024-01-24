@@ -5,7 +5,6 @@ import '../../employee/dtos/employee_dto.dart';
 
 class EmployeeStorage {
   static const _boxName = 'employee_box';
-  static const _employeeListKey = 'employee_key';
 
   late Box<EmployeeDto> _employeeBox;
 
@@ -46,7 +45,7 @@ class EmployeeStorage {
 
   Future delete(EmployeeDto employee) async {
     try {
-      await _employeeBox.delete(employee.key);
+      await _employeeBox.delete(int.parse(employee.id));
     } catch (e) {
       throw CacheException(message: e.toString());
     }
