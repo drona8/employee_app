@@ -19,10 +19,6 @@ class AppRouter extends $AppRouter {
           page: AddEmployeeRoute.page,
           path: RouteNames.addEmployee,
         ),
-        AutoRoute(
-          page: EditEmployeeRoute.page,
-          path: RouteNames.editEmployee,
-        ),
         RedirectRoute(
           path: '*',
           redirectTo: RouteNames.empty,

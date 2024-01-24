@@ -59,7 +59,6 @@ class AddEmployeeScreen extends StatelessWidget {
                   isUndoRequired: true,
                 );
                 context.router.pop();
-                //success
               }
             },
             (either) => either.fold(

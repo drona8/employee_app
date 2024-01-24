@@ -8,24 +8,22 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i4;
+import 'package:auto_route/auto_route.dart' as _i3;
 import 'package:employee_app/presentation/employee/add_employee_screen.dart'
     as _i1;
-import 'package:employee_app/presentation/employee/edit_employee_screen.dart'
-    as _i2;
 import 'package:employee_app/presentation/employee/employee_list_screen.dart'
-    as _i3;
-import 'package:flutter/material.dart' as _i5;
+    as _i2;
+import 'package:flutter/material.dart' as _i4;
 
-abstract class $AppRouter extends _i4.RootStackRouter {
+abstract class $AppRouter extends _i3.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i4.PageFactory> pagesMap = {
+  final Map<String, _i3.PageFactory> pagesMap = {
     AddEmployeeRoute.name: (routeData) {
       final args = routeData.argsAs<AddEmployeeRouteArgs>(
           orElse: () => const AddEmployeeRouteArgs());
-      return _i4.AutoRoutePage<dynamic>(
+      return _i3.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i1.AddEmployeeScreen(
           key: args.key,
@@ -33,16 +31,10 @@ abstract class $AppRouter extends _i4.RootStackRouter {
         ),
       );
     },
-    EditEmployeeRoute.name: (routeData) {
-      return _i4.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const _i2.EditEmployeeScreen(),
-      );
-    },
     EmployeeListRoute.name: (routeData) {
-      return _i4.AutoRoutePage<dynamic>(
+      return _i3.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i3.EmployeeListScreen(),
+        child: const _i2.EmployeeListScreen(),
       );
     },
   };
@@ -50,11 +42,11 @@ abstract class $AppRouter extends _i4.RootStackRouter {
 
 /// generated route for
 /// [_i1.AddEmployeeScreen]
-class AddEmployeeRoute extends _i4.PageRouteInfo<AddEmployeeRouteArgs> {
+class AddEmployeeRoute extends _i3.PageRouteInfo<AddEmployeeRouteArgs> {
   AddEmployeeRoute({
-    _i5.Key? key,
+    _i4.Key? key,
     bool isEdit = false,
-    List<_i4.PageRouteInfo>? children,
+    List<_i3.PageRouteInfo>? children,
   }) : super(
           AddEmployeeRoute.name,
           args: AddEmployeeRouteArgs(
@@ -66,8 +58,8 @@ class AddEmployeeRoute extends _i4.PageRouteInfo<AddEmployeeRouteArgs> {
 
   static const String name = 'AddEmployeeRoute';
 
-  static const _i4.PageInfo<AddEmployeeRouteArgs> page =
-      _i4.PageInfo<AddEmployeeRouteArgs>(name);
+  static const _i3.PageInfo<AddEmployeeRouteArgs> page =
+      _i3.PageInfo<AddEmployeeRouteArgs>(name);
 }
 
 class AddEmployeeRouteArgs {
@@ -76,7 +68,7 @@ class AddEmployeeRouteArgs {
     this.isEdit = false,
   });
 
-  final _i5.Key? key;
+  final _i4.Key? key;
 
   final bool isEdit;
 
@@ -87,23 +79,9 @@ class AddEmployeeRouteArgs {
 }
 
 /// generated route for
-/// [_i2.EditEmployeeScreen]
-class EditEmployeeRoute extends _i4.PageRouteInfo<void> {
-  const EditEmployeeRoute({List<_i4.PageRouteInfo>? children})
-      : super(
-          EditEmployeeRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'EditEmployeeRoute';
-
-  static const _i4.PageInfo<void> page = _i4.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i3.EmployeeListScreen]
-class EmployeeListRoute extends _i4.PageRouteInfo<void> {
-  const EmployeeListRoute({List<_i4.PageRouteInfo>? children})
+/// [_i2.EmployeeListScreen]
+class EmployeeListRoute extends _i3.PageRouteInfo<void> {
+  const EmployeeListRoute({List<_i3.PageRouteInfo>? children})
       : super(
           EmployeeListRoute.name,
           initialChildren: children,
@@ -111,5 +89,5 @@ class EmployeeListRoute extends _i4.PageRouteInfo<void> {
 
   static const String name = 'EmployeeListRoute';
 
-  static const _i4.PageInfo<void> page = _i4.PageInfo<void>(name);
+  static const _i3.PageInfo<void> page = _i3.PageInfo<void>(name);
 }
