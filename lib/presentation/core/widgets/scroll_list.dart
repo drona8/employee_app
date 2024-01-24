@@ -1,22 +1,25 @@
-import 'package:employee_app/presentation/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class ScrollList<T> extends StatefulWidget {
   final VoidCallback? onRefresh;
   final bool isLoading;
-  final List<T> items;
+  final String group1Header;
+  final String group2Header;
+  final List<T> itemGroup1;
+  final List<T> itemGroup2;
   final Widget noRecordFoundWidget;
-  final Widget header;
   final ScrollController controller;
-  final Widget Function(BuildContext context, int index, T item) itemBuilder;
+  final Widget Function(BuildContext context, T item) itemBuilder;
   const ScrollList({
     Key? key,
     required this.isLoading,
     required this.itemBuilder,
-    required this.items,
+    required this.group1Header,
+    required this.group2Header,
+    required this.itemGroup1,
+    required this.itemGroup2,
     required this.noRecordFoundWidget,
     required this.controller,
-    this.header = const SizedBox.shrink(),
     this.onRefresh,
   }) : super(key: key);
 
@@ -43,32 +46,67 @@ class _ScrollListState<T> extends State<ScrollList<T>> {
 
   @override
   Widget build(BuildContext context) {
-    return widget.isLoading && widget.items.isEmpty
+    return widget.isLoading &&
+            widget.itemGroup1.isEmpty &&
+            widget.itemGroup2.isEmpty
         ? const Center(
             child: CircularProgressIndicator(),
           )
         : RefreshIndicator(
             color: Theme.of(context).primaryColor,
             onRefresh: () async => widget.onRefresh?.call(),
-            child: widget.items.isEmpty && !widget.isLoading
+            child: widget.itemGroup1.isEmpty &&
+                    widget.itemGroup2.isEmpty &&
+                    !widget.isLoading
                 ? Center(
                     child: widget.noRecordFoundWidget,
                   )
-                : ListView.separated(
+                : CustomScrollView(
                     controller: _controller,
+                    shrinkWrap: true,
                     physics: const AlwaysScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      final item = widget.items[index];
-
-                      return widget.itemBuilder(context, index, item);
-                    },
-                    itemCount: widget.items.length,
-                    separatorBuilder: (context, index) {
-                      return const Divider(
-                        color: AppColor.lightGrey,
-                        thickness: 0.1,
-                      );
-                    },
+                    slivers: [
+                      SliverList(
+                        delegate: SliverChildListDelegate(
+                          [
+                            if (widget.itemGroup1.isNotEmpty) ...[
+                              Container(
+                                padding: const EdgeInsets.all(16),
+                                child: Text(
+                                  widget.group1Header,
+                                  style:
+                                      Theme.of(context).textTheme.displayLarge,
+                                ),
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: widget.itemGroup1
+                                    .map((e) => widget.itemBuilder(context, e))
+                                    .toList(),
+                              ),
+                            ],
+                            if (widget.itemGroup2.isNotEmpty) ...[
+                              Container(
+                                padding: const EdgeInsets.all(16),
+                                child: Text(
+                                  widget.group2Header,
+                                  style:
+                                      Theme.of(context).textTheme.displayLarge,
+                                ),
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: widget.itemGroup2
+                                    .map((e) => widget.itemBuilder(context, e))
+                                    .toList(),
+                              ),
+                            ],
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
           );
   }

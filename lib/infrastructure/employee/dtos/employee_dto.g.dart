@@ -17,24 +17,27 @@ class EmployeeDtoAdapter extends TypeAdapter<_$EmployeeDtoImpl> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return _$EmployeeDtoImpl(
-      name: fields[0] as String,
-      designation: fields[1] as String,
-      fromDate: fields[2] as String,
-      toDate: fields[3] as String,
+      id: fields[0] as String,
+      name: fields[1] as String,
+      designation: fields[2] as String,
+      fromDate: fields[3] as String,
+      toDate: fields[4] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$EmployeeDtoImpl obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
-      ..write(obj.name)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.designation)
+      ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.fromDate)
+      ..write(obj.designation)
       ..writeByte(3)
+      ..write(obj.fromDate)
+      ..writeByte(4)
       ..write(obj.toDate);
   }
 
@@ -55,6 +58,7 @@ class EmployeeDtoAdapter extends TypeAdapter<_$EmployeeDtoImpl> {
 
 _$EmployeeDtoImpl _$$EmployeeDtoImplFromJson(Map<String, dynamic> json) =>
     _$EmployeeDtoImpl(
+      id: json['id'] as String? ?? '',
       name: json['name'] as String? ?? '',
       designation: json['designation'] as String? ?? '',
       fromDate: json['fromDate'] as String? ?? '',
@@ -63,6 +67,7 @@ _$EmployeeDtoImpl _$$EmployeeDtoImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$EmployeeDtoImplToJson(_$EmployeeDtoImpl instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'name': instance.name,
       'designation': instance.designation,
       'fromDate': instance.fromDate,

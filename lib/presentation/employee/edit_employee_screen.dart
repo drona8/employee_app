@@ -9,13 +9,6 @@ class EditEmployeeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: EmployeeAppBar(
-        title: 'Edit Employee Page',
-      ),
-      body: Center(
-        child: Text('Edit Employee'),
-      ),
-    );
+    return const Scaffold();
   }
 }

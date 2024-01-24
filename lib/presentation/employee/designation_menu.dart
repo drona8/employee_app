@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/app_colors.dart';
@@ -20,12 +21,15 @@ class DesignationMenu extends StatelessWidget {
         child: ListView.separated(
           shrinkWrap: true,
           itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.all(16),
-              child: Align(
-                child: Text(
-                  _designationList[index],
-                  style: Theme.of(context).textTheme.bodyMedium,
+            return GestureDetector(
+              onTap: () => context.router.pop(_designationList[index]),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Align(
+                  child: Text(
+                    _designationList[index],
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
                 ),
               ),
             );

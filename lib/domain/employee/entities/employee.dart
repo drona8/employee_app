@@ -20,4 +20,6 @@ class Employee with _$Employee {
         fromDate: '',
         toDate: '',
       );
+
+  bool get isCurrentEmployee => toDate == 'No date';
 }

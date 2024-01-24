@@ -15,6 +15,7 @@ import 'package:employee_app/presentation/employee/edit_employee_screen.dart'
     as _i2;
 import 'package:employee_app/presentation/employee/employee_list_screen.dart'
     as _i3;
+import 'package:flutter/material.dart' as _i5;
 
 abstract class $AppRouter extends _i4.RootStackRouter {
   $AppRouter({super.navigatorKey});
@@ -22,9 +23,14 @@ abstract class $AppRouter extends _i4.RootStackRouter {
   @override
   final Map<String, _i4.PageFactory> pagesMap = {
     AddEmployeeRoute.name: (routeData) {
+      final args = routeData.argsAs<AddEmployeeRouteArgs>(
+          orElse: () => const AddEmployeeRouteArgs());
       return _i4.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i1.AddEmployeeScreen(),
+        child: _i1.AddEmployeeScreen(
+          key: args.key,
+          isEdit: args.isEdit,
+        ),
       );
     },
     EditEmployeeRoute.name: (routeData) {
@@ -44,16 +50,40 @@ abstract class $AppRouter extends _i4.RootStackRouter {
 
 /// generated route for
 /// [_i1.AddEmployeeScreen]
-class AddEmployeeRoute extends _i4.PageRouteInfo<void> {
-  const AddEmployeeRoute({List<_i4.PageRouteInfo>? children})
-      : super(
+class AddEmployeeRoute extends _i4.PageRouteInfo<AddEmployeeRouteArgs> {
+  AddEmployeeRoute({
+    _i5.Key? key,
+    bool isEdit = false,
+    List<_i4.PageRouteInfo>? children,
+  }) : super(
           AddEmployeeRoute.name,
+          args: AddEmployeeRouteArgs(
+            key: key,
+            isEdit: isEdit,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'AddEmployeeRoute';
 
-  static const _i4.PageInfo<void> page = _i4.PageInfo<void>(name);
+  static const _i4.PageInfo<AddEmployeeRouteArgs> page =
+      _i4.PageInfo<AddEmployeeRouteArgs>(name);
+}
+
+class AddEmployeeRouteArgs {
+  const AddEmployeeRouteArgs({
+    this.key,
+    this.isEdit = false,
+  });
+
+  final _i5.Key? key;
+
+  final bool isEdit;
+
+  @override
+  String toString() {
+    return 'AddEmployeeRouteArgs{key: $key, isEdit: $isEdit}';
+  }
 }
 
 /// generated route for

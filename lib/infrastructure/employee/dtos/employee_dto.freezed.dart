@@ -20,17 +20,20 @@ EmployeeDto _$EmployeeDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$EmployeeDto {
-  @JsonKey(name: 'name', defaultValue: '')
+  @JsonKey(name: 'id', defaultValue: '')
   @HiveField(0)
+  String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'name', defaultValue: '')
+  @HiveField(1)
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'designation', defaultValue: '')
-  @HiveField(1)
+  @HiveField(2)
   String get designation => throw _privateConstructorUsedError;
   @JsonKey(name: 'fromDate', defaultValue: '')
-  @HiveField(2)
+  @HiveField(3)
   String get fromDate => throw _privateConstructorUsedError;
   @JsonKey(name: 'toDate', defaultValue: '')
-  @HiveField(3)
+  @HiveField(4)
   String get toDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,14 +49,15 @@ abstract class $EmployeeDtoCopyWith<$Res> {
       _$EmployeeDtoCopyWithImpl<$Res, EmployeeDto>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'name', defaultValue: '') @HiveField(0) String name,
+      {@JsonKey(name: 'id', defaultValue: '') @HiveField(0) String id,
+      @JsonKey(name: 'name', defaultValue: '') @HiveField(1) String name,
       @JsonKey(name: 'designation', defaultValue: '')
-      @HiveField(1)
+      @HiveField(2)
       String designation,
       @JsonKey(name: 'fromDate', defaultValue: '')
-      @HiveField(2)
+      @HiveField(3)
       String fromDate,
-      @JsonKey(name: 'toDate', defaultValue: '') @HiveField(3) String toDate});
+      @JsonKey(name: 'toDate', defaultValue: '') @HiveField(4) String toDate});
 }
 
 /// @nodoc
@@ -69,12 +73,17 @@ class _$EmployeeDtoCopyWithImpl<$Res, $Val extends EmployeeDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
     Object? designation = null,
     Object? fromDate = null,
     Object? toDate = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -104,14 +113,15 @@ abstract class _$$EmployeeDtoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'name', defaultValue: '') @HiveField(0) String name,
+      {@JsonKey(name: 'id', defaultValue: '') @HiveField(0) String id,
+      @JsonKey(name: 'name', defaultValue: '') @HiveField(1) String name,
       @JsonKey(name: 'designation', defaultValue: '')
-      @HiveField(1)
+      @HiveField(2)
       String designation,
       @JsonKey(name: 'fromDate', defaultValue: '')
-      @HiveField(2)
+      @HiveField(3)
       String fromDate,
-      @JsonKey(name: 'toDate', defaultValue: '') @HiveField(3) String toDate});
+      @JsonKey(name: 'toDate', defaultValue: '') @HiveField(4) String toDate});
 }
 
 /// @nodoc
@@ -125,12 +135,17 @@ class __$$EmployeeDtoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
     Object? designation = null,
     Object? fromDate = null,
     Object? toDate = null,
   }) {
     return _then(_$EmployeeDtoImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -156,17 +171,16 @@ class __$$EmployeeDtoImplCopyWithImpl<$Res>
 @HiveType(typeId: 1, adapterName: 'EmployeeDtoAdapter')
 class _$EmployeeDtoImpl extends _EmployeeDto {
   _$EmployeeDtoImpl(
-      {@JsonKey(name: 'name', defaultValue: '')
-      @HiveField(0)
-      required this.name,
+      {@JsonKey(name: 'id', defaultValue: '') @HiveField(0) required this.id,
+      @JsonKey(name: 'name', defaultValue: '') @HiveField(1) required this.name,
       @JsonKey(name: 'designation', defaultValue: '')
-      @HiveField(1)
+      @HiveField(2)
       required this.designation,
       @JsonKey(name: 'fromDate', defaultValue: '')
-      @HiveField(2)
+      @HiveField(3)
       required this.fromDate,
       @JsonKey(name: 'toDate', defaultValue: '')
-      @HiveField(3)
+      @HiveField(4)
       required this.toDate})
       : super._();
 
@@ -174,25 +188,29 @@ class _$EmployeeDtoImpl extends _EmployeeDto {
       _$$EmployeeDtoImplFromJson(json);
 
   @override
-  @JsonKey(name: 'name', defaultValue: '')
+  @JsonKey(name: 'id', defaultValue: '')
   @HiveField(0)
+  final String id;
+  @override
+  @JsonKey(name: 'name', defaultValue: '')
+  @HiveField(1)
   final String name;
   @override
   @JsonKey(name: 'designation', defaultValue: '')
-  @HiveField(1)
+  @HiveField(2)
   final String designation;
   @override
   @JsonKey(name: 'fromDate', defaultValue: '')
-  @HiveField(2)
+  @HiveField(3)
   final String fromDate;
   @override
   @JsonKey(name: 'toDate', defaultValue: '')
-  @HiveField(3)
+  @HiveField(4)
   final String toDate;
 
   @override
   String toString() {
-    return 'EmployeeDto(name: $name, designation: $designation, fromDate: $fromDate, toDate: $toDate)';
+    return 'EmployeeDto(id: $id, name: $name, designation: $designation, fromDate: $fromDate, toDate: $toDate)';
   }
 
   @override
@@ -200,6 +218,7 @@ class _$EmployeeDtoImpl extends _EmployeeDto {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EmployeeDtoImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.designation, designation) ||
                 other.designation == designation) &&
@@ -211,7 +230,7 @@ class _$EmployeeDtoImpl extends _EmployeeDto {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, name, designation, fromDate, toDate);
+      Object.hash(runtimeType, id, name, designation, fromDate, toDate);
 
   @JsonKey(ignore: true)
   @override
@@ -229,17 +248,20 @@ class _$EmployeeDtoImpl extends _EmployeeDto {
 
 abstract class _EmployeeDto extends EmployeeDto {
   factory _EmployeeDto(
-      {@JsonKey(name: 'name', defaultValue: '')
+      {@JsonKey(name: 'id', defaultValue: '')
       @HiveField(0)
+      required final String id,
+      @JsonKey(name: 'name', defaultValue: '')
+      @HiveField(1)
       required final String name,
       @JsonKey(name: 'designation', defaultValue: '')
-      @HiveField(1)
+      @HiveField(2)
       required final String designation,
       @JsonKey(name: 'fromDate', defaultValue: '')
-      @HiveField(2)
+      @HiveField(3)
       required final String fromDate,
       @JsonKey(name: 'toDate', defaultValue: '')
-      @HiveField(3)
+      @HiveField(4)
       required final String toDate}) = _$EmployeeDtoImpl;
   _EmployeeDto._() : super._();
 
@@ -247,20 +269,24 @@ abstract class _EmployeeDto extends EmployeeDto {
       _$EmployeeDtoImpl.fromJson;
 
   @override
-  @JsonKey(name: 'name', defaultValue: '')
+  @JsonKey(name: 'id', defaultValue: '')
   @HiveField(0)
+  String get id;
+  @override
+  @JsonKey(name: 'name', defaultValue: '')
+  @HiveField(1)
   String get name;
   @override
   @JsonKey(name: 'designation', defaultValue: '')
-  @HiveField(1)
+  @HiveField(2)
   String get designation;
   @override
   @JsonKey(name: 'fromDate', defaultValue: '')
-  @HiveField(2)
+  @HiveField(3)
   String get fromDate;
   @override
   @JsonKey(name: 'toDate', defaultValue: '')
-  @HiveField(3)
+  @HiveField(4)
   String get toDate;
   @override
   @JsonKey(ignore: true)

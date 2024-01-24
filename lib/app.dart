@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'package:auto_route/auto_route.dart';
-import 'package:employee_app/presentation/theme/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'application/employee/employee_bloc.dart';
 import 'config.dart';
 import 'infrastructure/core/local_storage/employee_storage.dart';
 import 'locator.dart';
@@ -22,7 +23,9 @@ void runAppWithCrashlyticsAndLocalization() {
       WidgetsFlutterBinding.ensureInitialized();
 
       await locator<EmployeeStorage>().init();
-      runApp(const App());
+      runApp(
+        const App(),
+      );
     },
     (error, stackTrace) {
       //record error to crashlyte
@@ -37,16 +40,21 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     final router = locator<AppRouter>();
 
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      theme: appThemeData[AppTheme.light],
-      routerDelegate: AutoRouterDelegate(
-        router,
-        navigatorObservers: () => [
-          locator<RouterObserver>(),
-        ],
+    return BlocProvider<EmployeeBloc>(
+      create: (_) => locator<EmployeeBloc>()
+        ..add(const EmployeeEvent.initialize())
+        ..add(const EmployeeEvent.getAllEmployee()),
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        theme: appThemeData[AppTheme.light],
+        routerDelegate: AutoRouterDelegate(
+          router,
+          navigatorObservers: () => [
+            locator<RouterObserver>(),
+          ],
+        ),
+        routeInformationParser: router.defaultRouteParser(),
       ),
-      routeInformationParser: router.defaultRouteParser(),
     );
   }
 }

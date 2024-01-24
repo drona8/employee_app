@@ -8,11 +8,17 @@ class CustomTextField extends StatelessWidget {
   final VoidCallback? onTap;
   final Widget? suffixIcon;
   final bool readOnly;
+  final Function(String?) validator;
+  final TextEditingController controller;
+  final TextStyle style;
 
   const CustomTextField({
     super.key,
     required this.hintText,
     required this.prefixIcon,
+    required this.validator,
+    required this.controller,
+    required this.style,
     this.onTap,
     this.suffixIcon,
     this.readOnly = false,
@@ -21,8 +27,8 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: null,
-      style: Theme.of(context).textTheme.bodyMedium,
+      controller: controller,
+      style: style,
       textInputAction: TextInputAction.done,
       keyboardType: TextInputType.text,
       maxLines: 1,
@@ -32,7 +38,7 @@ class CustomTextField extends StatelessWidget {
         hintText: hintText,
         hintStyle: Theme.of(context).textTheme.titleMedium,
         prefixIcon: Container(
-          margin: const EdgeInsets.fromLTRB(15, 17, 14, 17),
+          margin: const EdgeInsets.all(6),
           child: SvgImageWidget(
             svgImage: prefixIcon,
             height: 24,
@@ -72,7 +78,15 @@ class CustomTextField extends StatelessWidget {
             width: 1,
           ),
         ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(
+            color: Theme.of(context).colorScheme.error,
+            width: 1,
+          ),
+        ),
       ),
+      validator: (value) => validator(value),
     );
   }
 }

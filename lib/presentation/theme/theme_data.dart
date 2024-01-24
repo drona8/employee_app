@@ -18,6 +18,7 @@ final appThemeData = {
     colorScheme: ColorScheme.fromSwatch().copyWith(
       secondary: AppColor.lightGrey,
       inversePrimary: AppColor.lightBlue,
+      error: AppColor.red,
     ),
     textTheme: _textTheme(),
   ),
@@ -59,6 +60,18 @@ TextTheme _textTheme() {
         bodySmall: const TextStyle(
           fontFamily: 'Roboto',
           fontSize: 15,
+          fontWeight: FontWeight.w400,
+          color: AppColor.lightBlack,
+        ),
+        displayLarge: const TextStyle(
+          fontFamily: 'Roboto',
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+          color: AppColor.blue,
+        ),
+        displayMedium: const TextStyle(
+          fontFamily: 'Roboto',
+          fontSize: 14,
           fontWeight: FontWeight.w400,
           color: AppColor.lightBlack,
         ),
