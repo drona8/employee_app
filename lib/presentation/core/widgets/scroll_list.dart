@@ -1,3 +1,4 @@
+import 'package:employee_app/presentation/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class ScrollList<T> extends StatefulWidget {
@@ -81,9 +82,19 @@ class _ScrollListState<T> extends State<ScrollList<T>> {
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: widget.itemGroup1
-                                    .map((e) => widget.itemBuilder(context, e))
-                                    .toList(),
+                                children: ListTile.divideTiles(
+                                  context: context,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .secondary
+                                      .withOpacity(0.2),
+                                  tiles: [
+                                    ...widget.itemGroup1
+                                        .map((e) =>
+                                            widget.itemBuilder(context, e))
+                                        .toList()
+                                  ],
+                                ).toList(),
                               ),
                             ],
                             if (widget.itemGroup2.isNotEmpty) ...[
@@ -98,9 +109,19 @@ class _ScrollListState<T> extends State<ScrollList<T>> {
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: widget.itemGroup2
-                                    .map((e) => widget.itemBuilder(context, e))
-                                    .toList(),
+                                children: ListTile.divideTiles(
+                                  context: context,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .secondary
+                                      .withOpacity(0.2),
+                                  tiles: [
+                                    ...widget.itemGroup2
+                                        .map((e) =>
+                                            widget.itemBuilder(context, e))
+                                        .toList()
+                                  ],
+                                ).toList(),
                               ),
                             ],
                           ],

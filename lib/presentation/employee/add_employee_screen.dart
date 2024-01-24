@@ -302,10 +302,18 @@ class AddEmployeeScreen extends StatelessWidget {
           clipBehavior: Clip.antiAlias,
           child: CustomDatePicker(
             isStartDate: isStartDate,
-            onPressed: (DateTime date) {
-              final formatedDate = DateFormat('dd/MM/yyyy').format(date);
-              if (isStartDate) startDateController.text = formatedDate;
-              if (!isStartDate) endDateController.text = formatedDate;
+            onPressed: (DateTime? date) {
+              if (date == null && isStartDate) return;
+              if (isStartDate) {
+                startDateController.text =
+                    DateFormat('dd MMM, yyyy').format(date!);
+              }
+
+              if (!isStartDate) {
+                endDateController.text = date != null
+                    ? DateFormat('dd MMM, yyyy').format(date)
+                    : 'No date';
+              }
               context.router.pop();
             },
           ),

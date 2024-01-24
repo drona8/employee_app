@@ -19,6 +19,7 @@ final appThemeData = {
       secondary: AppColor.lightGrey,
       inversePrimary: AppColor.lightBlue,
       error: AppColor.red,
+      background: AppColor.lightBlack,
     ),
     textTheme: _textTheme(),
   ),

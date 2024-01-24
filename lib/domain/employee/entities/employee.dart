@@ -22,4 +22,6 @@ class Employee with _$Employee {
       );
 
   bool get isCurrentEmployee => toDate == 'No date';
+  String get subtitleLebel =>
+      isCurrentEmployee ? 'From $fromDate' : '$fromDate - $toDate';
 }

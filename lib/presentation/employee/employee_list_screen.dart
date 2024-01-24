@@ -134,7 +134,7 @@ class _EmployeeItem extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleMedium,
               ),
               Text(
-                employee.fromDate,
+                employee.subtitleLebel,
                 style: Theme.of(context).textTheme.titleSmall,
               ),
             ],

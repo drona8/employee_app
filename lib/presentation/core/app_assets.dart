@@ -7,4 +7,6 @@ abstract class AppAssets {
   static const String dropdownIcon = '${_basePath}dropdown_icon.svg';
   static const String rightArrowIcon = '${_basePath}right_arrow_icon.svg';
   static const String deleteIcon = '${_basePath}delete_icon.svg';
+  static const String rightForwardIcon = '${_basePath}right_forward_icon.svg';
+  static const String leftForwardIcon = '${_basePath}left_forward_icon.svg';
 }
