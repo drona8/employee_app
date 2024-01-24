@@ -56,7 +56,6 @@ class ManageEmployeeScreen extends StatelessWidget {
                   message: isEdit
                       ? 'Employee Updated successfully!'
                       : 'Employee Added successfully!',
-                  isUndoRequired: true,
                 );
                 context.router.pop();
               }
@@ -172,10 +171,10 @@ class ManageEmployeeScreen extends StatelessWidget {
               ),
               child: Form(
                 key: _formKey,
-                child: Column(
+                child: ListView(
                   children: [
                     const SizedBox(
-                      height: 24,
+                      height: 10,
                     ),
                     CustomTextField(
                       hintText: 'Employee name',
@@ -185,7 +184,7 @@ class ManageEmployeeScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.bodyMedium!,
                     ),
                     const SizedBox(
-                      height: 24,
+                      height: 10,
                     ),
                     CustomTextField(
                       hintText: 'Select role',
@@ -226,7 +225,7 @@ class ManageEmployeeScreen extends StatelessWidget {
                       controller: roleController,
                     ),
                     const SizedBox(
-                      height: 24,
+                      height: 10,
                     ),
                     Row(
                       children: [
@@ -307,6 +306,10 @@ class ManageEmployeeScreen extends StatelessWidget {
           clipBehavior: Clip.antiAlias,
           child: CustomDatePicker(
             isStartDate: isStartDate,
+            firstDate: isStartDate ? DateTime.now() : DateTime.now(),
+            lastDay: isStartDate
+                ? DateTime.now().add(const Duration(days: 30))
+                : DateTime.now(),
             onPressed: (DateTime? date) {
               if (date == null && isStartDate) return;
               if (isStartDate) {

@@ -36,7 +36,7 @@ class EmployeeStorage {
   Future set(EmployeeDto employee) async {
     try {
       employee.id.isNotEmpty
-          ? await _employeeBox.putAt(int.parse(employee.id), employee)
+          ? await _employeeBox.put(int.parse(employee.id), employee)
           : await _employeeBox.add(employee);
     } catch (e) {
       throw CacheException(message: e.toString());

@@ -50,6 +50,7 @@ class _EmployeeList extends StatelessWidget {
                 context: context,
                 message: 'Employee deleted successfully!',
                 isUndoRequired: true,
+                isDeleted: true,
               );
               context.router.pop();
             }

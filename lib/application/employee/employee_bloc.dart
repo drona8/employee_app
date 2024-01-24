@@ -90,6 +90,7 @@ class EmployeeBloc extends Bloc<EmployeeEvent, EmployeeState> {
                 previousEmployeeList: _getPreviousEmployee(
                   employeeList: employeeList,
                 ),
+                selectedEmployee: value.employee,
               ),
             );
           },
@@ -130,6 +131,7 @@ class EmployeeBloc extends Bloc<EmployeeEvent, EmployeeState> {
                 previousEmployeeList: _getPreviousEmployee(
                   employeeList: employeeList,
                 ),
+                selectedEmployee: value.employee,
               ),
             );
           },

@@ -11,17 +11,21 @@ class CustomDatePicker extends StatefulWidget {
     super.key,
     required this.isStartDate,
     required this.onPressed,
+    required this.firstDate,
+    required this.lastDay,
   });
 
   final bool isStartDate;
   final Function(DateTime?) onPressed;
+  final DateTime firstDate;
+  final DateTime lastDay;
 
   @override
   State<CustomDatePicker> createState() => _CustomDatePickerState();
 }
 
 class _CustomDatePickerState extends State<CustomDatePicker> {
-  DateTime? _selectedDate;
+  DateTime? _selectedDate = DateTime.now();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -121,12 +125,11 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
                 ),
           CalendarDatePicker2(
             config: CalendarDatePicker2Config(
-              firstDate: DateTime.now().subtract(const Duration(days: 365)),
-              lastDate: DateTime.now().add(const Duration(days: 365)),
+              firstDate: widget.firstDate,
+              lastDate: widget.lastDay,
               weekdayLabelTextStyle: Theme.of(context).textTheme.bodySmall,
               calendarType: CalendarDatePicker2Type.single,
               dayTextStyle: Theme.of(context).textTheme.bodySmall,
-              disabledDayTextStyle: Theme.of(context).textTheme.bodySmall,
               selectedYearTextStyle: Theme.of(context).textTheme.bodySmall,
               customModePickerIcon: const SizedBox.shrink(),
               controlsTextStyle:
@@ -179,30 +182,30 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _selectedDate != null
-                    ? Expanded(
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const SvgImageWidget(
-                              svgImage: AppAssets.calenderIcon,
-                              height: 23,
-                              width: 20,
-                            ),
-                            const SizedBox(
-                              width: 12,
-                            ),
-                            Expanded(
-                              child: Text(
-                                DateFormat('dd MMM, yyyy')
-                                    .format(_selectedDate!),
-                                style: Theme.of(context).textTheme.bodyMedium,
-                              ),
-                            ),
-                          ],
+                Expanded(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const SvgImageWidget(
+                        svgImage: AppAssets.calenderIcon,
+                        height: 23,
+                        width: 20,
+                      ),
+                      const SizedBox(
+                        width: 12,
+                      ),
+                      Expanded(
+                        child: Text(
+                          _selectedDate != null
+                              ? DateFormat('dd MMM, yyyy')
+                                  .format(_selectedDate!)
+                              : 'No date',
+                          style: Theme.of(context).textTheme.bodyMedium,
                         ),
-                      )
-                    : const SizedBox.shrink(),
+                      ),
+                    ],
+                  ),
+                ),
                 Row(
                   children: [
                     ElevatedButton(
