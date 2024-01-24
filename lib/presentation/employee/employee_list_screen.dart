@@ -83,11 +83,9 @@ class _EmployeeList extends StatelessWidget {
           group2Header: 'Previous employees',
           itemGroup1: state.currentEmployeeList,
           itemGroup2: state.previousEmployeeList,
-          onRefresh: shouldBlockRefresh
-              ? null
-              : () => context.read<EmployeeBloc>().add(
-                    const EmployeeEvent.getAllEmployee(),
-                  ),
+          onRefresh: () => context.read<EmployeeBloc>().add(
+                const EmployeeEvent.getAllEmployee(),
+              ),
           noRecordFoundWidget:
               const NoRecordFound(title: 'No employee records found'),
           controller: ScrollController(),

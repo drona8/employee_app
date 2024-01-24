@@ -1,6 +1,7 @@
-import 'package:employee_app/presentation/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+
+import '../../theme/app_colors.dart';
 
 class CustomSlidable extends StatelessWidget {
   final Widget child;

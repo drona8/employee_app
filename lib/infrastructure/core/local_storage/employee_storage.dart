@@ -36,10 +36,8 @@ class EmployeeStorage {
 
   Future set(EmployeeDto employee) async {
     try {
-      final bool isExistingEmployee =
-          getAll().any((element) => element.key == employee.key);
-      isExistingEmployee
-          ? await _employeeBox.putAt(employee.key, employee)
+      employee.id.isNotEmpty
+          ? await _employeeBox.putAt(int.parse(employee.id), employee)
           : await _employeeBox.add(employee);
     } catch (e) {
       throw CacheException(message: e.toString());

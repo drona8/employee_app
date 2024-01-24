@@ -61,7 +61,12 @@ class EmployeeBloc extends Bloc<EmployeeEvent, EmployeeState> {
         );
       },
       saveEmployee: (_SaveEmployee value) async {
-        emit(state.copyWith(isSubmitting: true));
+        emit(
+          state.copyWith(
+            isSubmitting: true,
+            selectedEmployee: value.employee,
+          ),
+        );
         final failureOrSuccess = await repository.saveEmployee(
           employee: value.employee,
           isEdit: value.isEdit,

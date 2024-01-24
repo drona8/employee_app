@@ -1,12 +1,12 @@
-import 'package:employee_app/application/employee/employee_bloc.dart';
-import 'package:employee_app/infrastructure/employee/datasource/employee_local_datasource.dart';
-import 'package:employee_app/infrastructure/employee/datasource/employee_remote_datasource.dart';
-import 'package:employee_app/infrastructure/employee/repository/employee_repository.dart';
 import 'package:get_it/get_it.dart';
 
+import 'application/employee/employee_bloc.dart';
 import 'config.dart';
 import 'domain/core/error/exception_handler.dart';
 import 'infrastructure/core/local_storage/employee_storage.dart';
+import 'infrastructure/employee/datasource/employee_local_datasource.dart';
+import 'infrastructure/employee/datasource/employee_remote_datasource.dart';
+import 'infrastructure/employee/repository/employee_repository.dart';
 import 'presentation/routes/app_router.dart';
 import 'presentation/routes/router_observer.dart';
 

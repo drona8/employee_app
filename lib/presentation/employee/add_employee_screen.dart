@@ -142,10 +142,20 @@ class AddEmployeeScreen extends StatelessWidget {
                                 designation: roleController.text,
                                 fromDate: startDateController.text,
                                 toDate: endDateController.text,
+                                key: isEdit
+                                    ? context
+                                        .read<EmployeeBloc>()
+                                        .state
+                                        .selectedEmployee
+                                        .key
+                                    : '',
                               );
                               context.read<EmployeeBloc>().add(
-                                  EmployeeEvent.saveEmployee(
-                                      employee: emp, isEdit: false));
+                                    EmployeeEvent.saveEmployee(
+                                      employee: emp,
+                                      isEdit: isEdit,
+                                    ),
+                                  );
                             }
                           },
                     child: Text(

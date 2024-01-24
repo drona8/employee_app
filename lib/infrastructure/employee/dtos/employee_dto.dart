@@ -1,6 +1,7 @@
-import 'package:employee_app/domain/employee/entities/employee.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive/hive.dart';
+
+import '../../../domain/employee/entities/employee.dart';
 
 part 'employee_dto.freezed.dart';
 part 'employee_dto.g.dart';
@@ -24,7 +25,7 @@ class EmployeeDto extends HiveObject with _$EmployeeDto {
   EmployeeDto._();
 
   Employee get toDomain => Employee(
-        key: key ?? id,
+        key: key != null ? key.toString() : id,
         name: name,
         designation: designation,
         fromDate: fromDate,
